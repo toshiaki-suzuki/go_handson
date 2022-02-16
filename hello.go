@@ -10,16 +10,19 @@ import (
 func main() {
 	x := input("type a number")
 	n, err := strconv.Atoi(x)
-	if err != nil {
-		return
-	}
 	t := 0
 	c := 1
+	if err != nil {
+		goto err // gotoは変数宣言の後に書かないとコンパイルエラーが出る
+	}
 	for c <= n {
 		t += c
 		c++
 	}
 	fmt.Printf("合計は %dです", t)
+
+err:
+	fmt.Println("ERROR!")
 }
 
 func input(msg string) string {
