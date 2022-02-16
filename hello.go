@@ -8,30 +8,16 @@ import (
 )
 
 func main() {
-	x := input("type 1~5")
-	t := 0
+	x := input("type a number")
 	n, err := strconv.Atoi(x)
 	if err != nil {
 		return
 	}
-	switch n {
-	case 5:
-		t += 5
-		fallthrough //一つ下のcaseも実行する
-	case 4:
-		t += 4
-		fallthrough
-	case 3:
-		t += 3
-		fallthrough
-	case 2:
-		t += 2
-		fallthrough
-	case 1:
-		t += 1
-	default:
-		fmt.Println("範囲外です")
-		return
+	t := 0
+	c := 1
+	for c <= n {
+		t += c
+		c++
 	}
 	fmt.Printf("合計は %dです", t)
 }
