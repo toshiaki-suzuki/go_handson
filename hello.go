@@ -13,6 +13,8 @@ func main() {
 	fmt.Println(a)
 	fmt.Println(b)
 	fmt.Println(c)
+	c = append(c, 50)
+	fmt.Println(c)
 }
 
 func input(msg string) string {
