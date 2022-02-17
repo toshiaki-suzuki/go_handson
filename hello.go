@@ -4,27 +4,15 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	x := input("type a number")
-	ar := strings.Split(x, " ")
-	t := 0
-
-	for _, v := range ar {
-		n, er := strconv.Atoi(v)
-		if er != nil {
-			goto err
-		}
-		t += n
-	}
-	fmt.Printf("合計は %dです", t)
-	return
-
-err:
-	fmt.Println("ERROR!")
+	a := [5]int{10, 20, 30, 40, 50} // 配列
+	b := a[:3]                      // 配列から取り出したスライス
+	c := []int{1, 2, 3, 4}          // スライス
+	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
 }
 
 func input(msg string) string {
