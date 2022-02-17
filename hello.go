@@ -5,21 +5,23 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func main() {
 	x := input("type a number")
-	n, err := strconv.Atoi(x)
+	ar := strings.Split(x, " ")
 	t := 0
-	c := 1
-	if err != nil {
-		goto err // gotoは変数宣言の後に書かないとコンパイルエラーが出る
-	}
-	for c <= n {
-		t += c
-		c++
+
+	for i := 0; i < len(ar); i++ {
+		n, er := strconv.Atoi(ar[i])
+		if er != nil {
+			goto err
+		}
+		t += n
 	}
 	fmt.Printf("合計は %dです", t)
+	return
 
 err:
 	fmt.Println("ERROR!")
