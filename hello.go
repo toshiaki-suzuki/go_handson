@@ -14,6 +14,7 @@ func main() {
 	}
 
 	m["total"] = m["a"] + m["b"] + m["c"]
+	delete(m, "a")
 	fmt.Println(m)
 }
 
