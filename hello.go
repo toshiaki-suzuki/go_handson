@@ -7,13 +7,17 @@ import (
 )
 
 func main() {
-	m := []string{}
-	m, _ = push(m, "apple")
-	m, _ = push(m, "banana")
-	m, _ = push(m, "orange")
+	modify := func(a []string, f func([]string) []string) []string {
+		return f(a)
+	}
+	m := []string{
+		"1st", "2nd", "3rd",
+	}
 	fmt.Println(m)
-	m, v := pop(m)
-	fmt.Println("get "+v+" ->", m)
+	m1 := modify(m, func([]string) []string {
+		return append(m, m...)
+	})
+	fmt.Println(m1)
 }
 
 func input(msg string) string {
