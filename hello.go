@@ -7,17 +7,14 @@ import (
 )
 
 func main() {
-	modify := func(a []string, f func([]string) []string) []string {
-		return f(a)
-	}
-	m := []string{
-		"1st", "2nd", "3rd",
-	}
-	fmt.Println(m)
-	m1 := modify(m, func([]string) []string {
-		return append(m, m...)
-	})
-	fmt.Println(m1)
+
+	data := "*新しい値*"
+	m1 := modify(data)
+	data = "+new data+"
+	m2 := modify(data)
+
+	fmt.Println(m1())
+	fmt.Println(m2())
 }
 
 func input(msg string) string {
@@ -32,4 +29,13 @@ func push(a []string, v string) ([]string, int) {
 
 func pop(a []string) ([]string, string) {
 	return a[:len(a)-1], a[len(a)-1]
+}
+
+func modify(d string) func() []string {
+	m := []string{
+		"1st", "2nd",
+	}
+	return func() []string {
+		return append(m, d)
+	}
 }
